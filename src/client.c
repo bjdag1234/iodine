@@ -88,8 +88,8 @@ client_set_qtype(char *qtype)
 		this.do_qtype = T_AAAA;
 	else if (!strcasecmp(qtype, "A6"))
 		this.do_qtype = T_A6;
-	else if (!strcasecmp(qtype, "DNAME"))
-		this.do_qtype = T_DNAME;
+	//else if (!strcasecmp(qtype, "DNAME"))
+		//this.do_qtype = T_DNAME;
 	return (this.do_qtype == T_UNSET);
 }
 
@@ -108,7 +108,7 @@ client_get_qtype()
 	else if (this.do_qtype == T_PTR)	c = "PTR";
 	else if (this.do_qtype == T_AAAA)	c = "AAAA";
 	else if (this.do_qtype == T_A6)	c = "A6";
-	else if (this.do_qtype == T_DNAME)	c = "DNAME";
+	/*else if (this.do_qtype == T_DNAME)	c = "DNAME";/*
 
 	return c;
 }
@@ -751,7 +751,7 @@ read_dns_withq(uint8_t *buf, size_t buflen, struct query *q)
 			return rv;
 
 		if (q->type == T_CNAME || q->type == T_TXT ||
-			q->type == T_PTR || q->type == T_A6 || q->type == T_DNAME)
+			q->type == T_PTR || q->type == T_A6 /* || q->type == T_DNAME */)
 		/* CNAME can also be returned from an A question */
 		{
 			/*
@@ -2157,7 +2157,7 @@ handshake_qtype_numcvt(int num)
 	case  2:	return T_TXT;
 	case  3:	return T_SRV;
 	case  4:	return T_MX;
-	case  5:	return T_DNAME;
+//	case  5:	return T_DNAME;
 	case  6:	return T_PTR;
 	case  7:	return T_CNAME;
 	case  8:	return T_A6;

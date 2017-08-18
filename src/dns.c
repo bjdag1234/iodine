@@ -96,7 +96,7 @@ dns_encode(char *buf, size_t buflen, struct query *q, qr_t qr, char *data, size_
 
 		if (q->type == T_CNAME || q->type == T_A ||
 			q->type == T_PTR || q->type == T_AAAA ||
-			q->type == T_A6 || q->type == T_DNAME) {
+			q->type == T_A6 /* || q->type == T_DNAME */) {
 			/* data is expected to be like "Hblabla.host.name.com\0" */
 
 			char *startp;
@@ -495,7 +495,7 @@ dns_decode(char *buf, size_t buflen, struct query *q, qr_t qr, char *packet, siz
 		}
 		else if ((type == T_A || type == T_CNAME ||
 			type == T_PTR || type == T_AAAA ||
-			type == T_A6 || type == T_DNAME) && buf) {
+			type == T_A6 /* || type == T_DNAME */) && buf) {
 			/* Assume that first answer is what we wanted */
 			readname(packet, packetlen, &data, name, sizeof(name));
 			CHECKLEN(10);
