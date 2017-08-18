@@ -108,7 +108,7 @@ client_get_qtype()
 	else if (this.do_qtype == T_PTR)	c = "PTR";
 	else if (this.do_qtype == T_AAAA)	c = "AAAA";
 	else if (this.do_qtype == T_A6)	c = "A6";
-	/*else if (this.do_qtype == T_DNAME)	c = "DNAME";/*
+	/*else if (this.do_qtype == T_DNAME)	c = "DNAME";*/
 
 	return c;
 }
